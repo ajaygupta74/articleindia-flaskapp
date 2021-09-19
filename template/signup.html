@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %} ArticleIndia | Signup {% endblock title %}
+
+{% block mymain %}
+
+<div class="card text-center">
+  <div class="card-body">
+    <h5 class="card-title">Doesn't Have an Account ? Create here !</h5>
+    <p class="card-text">Create a fresh account with simple step and take advantage of posting your own articles !</p>
+    <a href="/login" class="btn btn-primary">Login Here</a>
+  </div>
+</div>
+
+<div id="signupform">
+<form method="POST">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="input1">Full Name</label>
+      <input type="text" name="fullname" class="form-control" id="input1" placeholder="Your name" required>
+    </div><br>
+    <div class="form-group col-md-6">
+      <label for="input2">Email</label>
+      <input type="email" name="emailid" class="form-control" id="input2" placeholder="Email" required>
+    </div><br>
+    <div class="form-group col-md-6">
+      <label for="input3">Create Password</label>
+      <input type="password" name="password1" class="form-control" id="input3" placeholder="Should be alphanumeric" required>
+    </div><br>
+    <div class="form-group col-md-6">
+      <label for="input4">Confirm Password</label>
+      <input type="password" name="password2" class="form-control" id="input4" placeholder="Confirm Password" required>
+    </div>
+
+  </div><br>
+
+  <button type="submit" class="btn btn-primary">Sign Up</button>
+</form>
+</div>
+
+{% endblock mymain %}

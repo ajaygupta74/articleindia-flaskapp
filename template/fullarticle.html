@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %} ArticleIndia | Article {% endblock title %}
+
+{% block mymain %}
+
+<div class="card text-center">
+  <div class="card-body">
+    <h5 class="card-title">{{postdetails.title}}</h5>
+    <p class="card-text"><i>{{postdetails.emailid}}</i></p>
+    <p class="card-text">{{postdetails.tags}}</p>
+    <a href="/allarticles" class="btn btn-primary">Go Back to All Articles</a>
+  </div>
+  <div class="card-footer text-muted">
+   	<p id="article">{{postdetails.article}}</p>
+  </div>
+</div>
+
+
+{% endblock mymain %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}ArticleIndia | Allarticles {% endblock title %}
+
+
+{% block mymain %}
+
+<div class="card text-center">
+  <div class="card-body">
+    <h5 class="card-title">All Posted Articles</h5>
+    <p class="card-text">Here we are listing all articles posted by users according to latest. Take a Tour and Enjoy !</p>
+    <a href="#latestarticles" class="btn btn-primary">Read One by One</a>
+  </div>
+</div>
+
+<br>
+
+{% if postdetails|length > 0 %}
+
+<div id="latestarticles">
+  {% for post in postdetails %}
+  <div class="card" id="articleitem">
+    <div class="card-body">
+      <h5 class="card-title">{{post.title|truncate(50)}}</h5>
+      <p class="card-text"><i>{{post.tags|truncate(70)}}</i><br>
+      By - {{post.emailid}}</p>
+      <p class="card-text">{{post.article|truncate(100)}}</p>
+      <a href="/fullarticle/{{post.id}}" class="card-link">Read More</a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% else %}
+  <div id="latestarticles">
+    <p>No article posted yet</p>
+  </div>
+{% endif %}
+
+
+<br><br>
+
+{% endblock mymain %}

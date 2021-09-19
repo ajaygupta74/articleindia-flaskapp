@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	ArticleIndia | Myprofile
+{% endblock title %}
+
+{% block mymain %}
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Your Profile</h5>
+    <p class="card-text">Hello Mr. {{current_user.fullname}}<br>
+    {{current_user.emailid}}</p><br>
+    <a href="#latestarticles" class="btn btn-primary">All Posted Articles</a>
+ </div>
+</div>
+
+
+<div id="postarticle">
+	<form method="POST">
+	  <div class="form-group">
+	    <label for="exampleFormControlInput1">Title</label>
+	    <input type="text" class="form-control" name="title" id="exampleFormControlInput1" placeholder="A story of Lion"required>
+	  </div>
+	  <div class="form-group"><br>
+	    <label for="exampleFormControlTextarea1">Description</label>
+	    <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3" placeholder="what describes your article ?" required></textarea>
+	  </div>
+	  <div class="form-group"><br>
+	    <label for="exampleFormControlTextarea2">Speak your Mind !</label>
+	    <textarea class="form-control" name="article" id="exampleFormControlTextarea2" rows="3" required></textarea>
+	  </div>
+	  <br>
+	  <input class="btn btn-primary" type="submit" value="Upload">
+	  <input class="btn btn-primary" type="reset" value="Cancel">
+	</form>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Articles Posted by You</h5>
+  </div>
+</div>
+
+{% if postdetails|length > 0 %}
+
+<div id="latestarticles">
+  {% for post in postdetails %}
+  <div class="card" id="articleitem">
+    <div class="card-body">
+      <h5 class="card-title">{{post.title|truncate(50)}}</h5>
+      <p class="card-text"><i>{{post.tags|truncate(70)}}</i></p>
+      <p class="card-text">{{post.article|truncate(100)}}</p>
+      <a href="/fullarticle/{{post.id}}" class="card-link">Read More</a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% else %}
+  <div id="latestarticles">
+    <p>No article posted yet</p>
+  </div>
+{% endif %}
+
+<br>
+
+{% endblock mymain %}

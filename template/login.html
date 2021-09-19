@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %} ArticleIndia | Login {% endblock title %}
+
+{% block mymain %}
+
+<div class="card text-center">
+  <div class="card-body">
+    <h5 class="card-title">Already Have an Account ? Login Here !</h5>
+    <p class="card-text">Don't hesitate about your credentials. Your Data is safe with us with full security !</p>
+    <a href="/signup" class="btn btn-primary">Signup Here</a>
+  </div>
+</div>
+
+<div id="signupform">
+<form method="POST">
+  <div class="form-row"><br>
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Email</label>
+      <input type="email" class="form-control" name="loginemailid" id="inputEmail4" placeholder="Email" required>
+    </div><br>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Enter Password</label>
+      <input type="password" class="form-control" name="checkpassword" id="inputPassword4" placeholder="Password" required>
+    </div>
+  </div><br>
+  <button type="submit" class="btn btn-primary">Login</button>
+</form>
+</div>
+
+{% endblock mymain %}

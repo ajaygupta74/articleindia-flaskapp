@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block title %} ArticleIndia | Home {% endblock title %}
+
+
+{% block mymain %}
+ 
+<div class="card text-center" style="width: 100%;" id="bannertext">
+  <div class="card-body">
+    <h4 class="card-title">Welcome to ArticleIndia</h4>
+    <p class="card-text">With your support we have a ingrowing platform for our writters and their articles which will provide you awesome articles daily with your breakfast. Enjoy and Support !</p><br>
+    <a href="/allarticles" class="btn btn-primary" id="bannerbutton">All Articles</a>
+  </div>
+</div>
+
+
+<center><p><b><br><br>Latest Articles<br><hr width="5%"></b></p></center>
+
+{% if postdetails|length > 0 %}
+
+<div id="latestarticles">
+  {% for post in postdetails %}
+  <div class="card" id="articleitem">
+    <div class="card-body">
+      <h5 class="card-title">{{post.title|truncate(50)}}</h5>
+      <p class="card-text"><i>{{post.tags|truncate(70)}}</i><br>
+      By - {{post.emailid}}</p>
+      <p class="card-text">{{post.article|truncate(100)}}</p>
+      <a href="/fullarticle/{{post.id}}" class="card-link">Read More</a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% else %}
+  <div id="latestarticles">
+    <p>No article posted yet</p>
+  </div>
+{% endif %}
+
+<br><br>
+<div id="contactme">
+  <center><p><b><br>Give Your Feedback<br><hr width="5%"></b></p></center>
+  <form method="POST">
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Email address</label>
+      <input type="email" class="form-control" name="emailid" id="exampleFormControlInput1" placeholder="name@example.com" required>
+    </div>
+    <div class="form-group"><br>
+      <label for="exampleFormControlSelect1">Give a Label</label>
+      <select class="form-control" id="exampleFormControlSelect1" name="label" required>
+        <option value="Select One" >Select One</option>
+        <option value="Bad" >Bad</option>
+        <option value="Good" >Good</option>
+        <option value="Nice" >Nice</option>
+      </select>
+    </div>
+    <div class="form-group"><br>
+      <label for="exampleFormControlTextarea1">Write Your Message</label>
+      <textarea name="message" class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+    </div>
+    <br>
+    <button class="btn btn-primary" type="submit">Next</button>
+    <button class="btn btn-primary" type="reset">Cancel</button>
+  </form>
+</div>
+
+
+<center><p><b><br>All Feedbacks are here<br><hr width="5%"></b></p></center>
+{% if feedbacks|length > 0 %}
+
+<div id="latestarticles">
+  {% for feed in feedbacks %}
+  <div class="card" id="articleitem">
+    <div class="card-body">
+      <h5 class="card-title">{{feed.emailid}}</h5>
+      <p class="card-text"><i>{{feed.status}}</i></p>
+      <p class="card-text">{{feed.comment}}</p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% else %}
+  <div id="latestarticles">
+    <p>No Feedback posted yet</p>
+  </div>
+{% endif %}
+
+
+{% endblock mymain %}
