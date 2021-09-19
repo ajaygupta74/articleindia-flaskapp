@@ -6,7 +6,8 @@ Install following to work with this project ---
 1.  flask
 2.  flask-sqlalchemy
 3.  flask-login
-4.  
+
+
 Run following command to install --- 
 a. make avirtual environment in project directory
 b. Install flask in your virtual environment $ pip install flask 
